@@ -5,17 +5,16 @@
   "main": "index.js",
   "scripts": {
     "watch": "nodemon ./start.js"
-
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.2.1",
-    "ejs": "^2.6.1",
     "exports": "0.0.1",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.6",
+    "pug": "^2.0.3",
     "request": "^2.88.0"
   },
   "devDependencies": {
