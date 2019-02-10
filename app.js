@@ -12,5 +12,9 @@ app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/c
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', routes);
+app.use('/article/new', routes);
+app.use('/articles', routes);
+app.use('/article/:id', routes);
+
 
 module.exports = app;

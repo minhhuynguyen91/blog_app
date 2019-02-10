@@ -1,0 +1,18 @@
+form(action="/article" method="POST")
+  .form-group
+    label(for="title") Title:
+    input.form-control(
+      type="text"
+      id="title"
+      name="title"
+    )
+
+  .form-group
+    label(for="content") Content:
+    textarea.form-control(
+      type="text"
+      id="content"
+      name="content"
+    )
+
+  button.btn.btn-primary(type="submit" value="Submit") Submit

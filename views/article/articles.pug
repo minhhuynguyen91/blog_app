@@ -1,0 +1,16 @@
+extends ../layouts/layout
+
+block content
+  br
+  .container
+    h1 Articles 
+    if articles.length
+      each article in articles
+        .card
+            .card-body
+              h5.card-title=article.title
+              p.card-text Some quick example text to build on the card title and make up the bulk of the card
+              a.btn.btn-primary(href="/articles/" + article._id) Go somewhere
+        br
+    else
+      h1 There is no article :(
