@@ -10,7 +10,8 @@ block content
             .card-body
               h5.card-title=article.title
               p.card-text Some quick example text to build on the card title and make up the bulk of the card
-              a.btn.btn-primary(href="/articles/" + article._id) Go somewhere
+              a.btn.btn-primary(href="/articles/" + article._id) Detail
+              a.btn.btn-primary(href="/articles/" + article._id+ "/edit" ) Update
         br
     else
       h1 There is no article :(

@@ -15,9 +15,23 @@ routes.get('/', (req, res) => {
 });
 
 routes.get('/article/new', (req, res) => {
-  res.render('article/new', {title: 'Create Article'});
+  const article = {title: '', content: ''};
+  res.render('article/new', {title: 'Create Article', method: 'POST', article});
 
 });
+
+routes.get('/articles/:id/edit', (req, res) => {
+  const objectId = new mongo.ObjectId(req.params.id);
+  Article.findOne( { '_id': objectId} )
+    .then((article) => {
+      res.render('article/edit', {title: 'Update Article', method: 'PUT', article});
+    })
+
+    .catch(() => {
+      res.send('something went wrong');
+    })
+});
+
 
 routes.get('/articles', (req, res) => {
   Article.find()
@@ -34,7 +48,7 @@ routes.get('/articles', (req, res) => {
 
 routes.get('/articles/:id', (req, res) => {
   const objectId = new mongo.ObjectId(req.params.id);
-  Article.find( { '_id': objectId} )
+  Article.findOne( { '_id': objectId} )
     .then((article) => {
       res.render('article/article', {article});
     })
