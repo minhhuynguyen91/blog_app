@@ -16,9 +16,9 @@ app.use('/simplemde', express.static(__dirname + '/node_modules/simplemde/dist')
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', routes);
-app.use('/article/new', routes);
+app.use('/articles/new', routes);
 app.use('/articles', routes);
-app.use('/article/:id', routes);
-app.use('/article/:id/edit', routes);
+app.use('/articles/:id', routes);
+app.use('/articles/:id/edit', routes);
 
 module.exports = app;
