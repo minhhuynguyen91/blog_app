@@ -28,7 +28,7 @@ exports.edit = function(req, res) {
   const objectId = new mongo.ObjectId(req.params.id);
   Article.findOne( { '_id': objectId} )
     .then((article) => {
-      res.render('article/edit', {title: 'Update Article', method: 'POST', action:'/articles/' +  objectId,article});
+      res.render('article/edit', {title: 'Update Article', method: 'POST', action:'/articles/' +  objectId  + '?_method=put' ,article});
     })
 
     .catch(() => {
@@ -37,11 +37,18 @@ exports.edit = function(req, res) {
 };
 
 exports.put = function (req, res) {
-  const article = Article.findOneAndUpdate({'_id' : objectId}, { 'title' :req.title, 'content':req.content});
-  article.save()
-    .then(() => {res.send('The article is updated successfully'); })
-    .catch(() => {res.send('Sorry! something went wrong'); });
-    
+  const objectId = new mongo.ObjectId(req.params.id);
+  console.log(req.body);
+
+  Article.findOneAndUpdate({'_id' : objectId}, { 'title' :req.body.title, 'content':req.body.content}, {new: true})
+
+    .then((article) => {
+      res.render('article/article', {article});
+    })
+    .catch(() => {
+      res.send('something went wrong');
+    });
+
 };
 
 exports.id = function (req, res) {

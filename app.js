@@ -3,6 +3,8 @@ const app = express();
 const routes = require('./routes/index');
 const bodyParser = require('body-parser');
 var path = require('path');
+var methodOverride = require('method-override');
+
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug')
@@ -12,9 +14,8 @@ app.use('/popper', express.static(__dirname + '/node_modules/popper.js/dist/umd'
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/simplemde', express.static(__dirname + '/node_modules/simplemde/dist'));
 
-
+app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use('/', routes);
 app.use('/articles/new', routes);
 app.use('/articles', routes);
