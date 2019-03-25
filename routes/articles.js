@@ -53,8 +53,12 @@ exports.put = function (req, res) {
 
 exports.id = function (req, res) {
   const objectId = new mongo.ObjectId(req.params.id);
+  var showdown = require('showdown'),
+      converter = new showdown.Converter();
+
   Article.findOne( { '_id': objectId} )
     .then((article) => {
+      article.content = converter.makeHtml(article.content);
       res.render('article/article', {article});
     })
 

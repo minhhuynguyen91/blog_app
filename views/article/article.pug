@@ -4,5 +4,10 @@ block content
   br
   
   .container
-    
-    h1 #{article.title}
+    .row
+      .col
+        h1 #{article.title}
+
+    .row
+      .col
+        .article-content!= article.content
